@@ -1,11 +1,18 @@
-import { useSelector } from "react-redux";
-import { getCities } from "../API";
+import { useActions } from "../hooks/useActions";
+import { useState } from "react";
 
 const CityForm = () => {
-  const { citiesList } = useSelector((state) => state.cities);
+  const { fetchCity } = useActions();
+  const [cityField, setCityField] = useState("");
 
-  const click = () => {
-    getCities("London");
+  const handleChange = (event) => {
+    const currentValue = event.target.value;
+    setCityField(currentValue);
+  };
+
+  const addCity = () => {
+    fetchCity(cityField);
+    setCityField("");
   };
 
   return (
@@ -14,8 +21,10 @@ const CityForm = () => {
         <input
           className="city-form__input"
           placeholder="Введите название города"
+          value={cityField}
+          onChange={handleChange}
         ></input>
-        <button onClick={click} className="city-form__button">
+        <button onClick={addCity} className="city-form__button">
           Добавить
         </button>
       </div>

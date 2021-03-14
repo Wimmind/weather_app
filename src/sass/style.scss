@@ -18,8 +18,8 @@ button {
     cursor: pointer;
 }
 
-button, 
-button:active, 
+button,
+button:active,
 button:focus,
 textarea:active,
 textarea:focus,
@@ -62,7 +62,11 @@ input:focus {
         border-radius: 30px;
         padding: 24px;
         margin-right: 16px;
-        width: calc(100% - 162px);
+        width: 512px;
+
+        &:focus {
+            border: 1px solid #CB6B12;
+        }
     }
 
     &__button {
@@ -71,5 +75,87 @@ input:focus {
         border-radius: 30px;
         width: 162px;
         color: #fff;
+
+        &:hover {
+            background-color: #BA6211;
+            border: 1px solid #99500F;
+        }
+    }
+}
+
+.citiesTable {
+    width: 100%;
+    border-collapse: collapse;
+
+    &__wrapper {
+        padding: 24px 120px;
+    }
+
+    & thead {
+        background-color: #F2F2F2;
+        color: #656A70;
+    }
+
+    & th {
+        text-align: left;
+        padding: 15px;
+        font-size: 14px;
+        position: relative;
+        cursor: pointer;
+
+        &:first-child {
+            width: 30%;
+
+            &::after,
+            &::before {
+                position: absolute;
+                color: #BDBDBD;
+                font-size: 8px;
+                left: 54px;
+            }
+
+            &::after {
+                content: "▲";
+                left: 54px;
+            }
+
+            &::before {
+                content: "▼";
+                top: 50%;
+            }
+
+            &.activeAsc {
+                &::after {
+                    color: #333;
+                }
+            }
+
+            &.activeDesc {
+                &::before {
+                    color: #333;
+                }
+            }
+        }
+    }
+
+    & td {
+        padding: 30px 15px;
+    }
+}
+
+.citiesTableItem {
+    &__button {
+        background-color: #fff;
+        border: 1px solid #E0E0E0;
+        border-radius: 30px;
+        font-size: 14px;
+        color: #CB6B12;
+        width: 144px;
+        padding: 10px 0px;
+
+        &:hover {
+            background-color: #FDF4EC;
+            border: 1px solid #99500F;
+        }
     }
 }
